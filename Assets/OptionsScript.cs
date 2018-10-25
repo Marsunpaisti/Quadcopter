@@ -7,6 +7,7 @@ public class OptionsScript : MonoBehaviour {
     public GameObject pauseCanvas;
     public bool isPaused;
     public bool enableInternalPID = false;
+    public InputField serialPortNameField;
 
     void Start()
     {
@@ -52,6 +53,12 @@ public class OptionsScript : MonoBehaviour {
         {
             enableInternalPID = false;
         }
+    }
+
+    public string getSerialPortName()
+    {
+        string text = serialPortNameField.text;
+        return text;
     }
 
     public void QuitGame()

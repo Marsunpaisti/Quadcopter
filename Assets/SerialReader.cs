@@ -5,6 +5,7 @@ using System.IO.Ports;
 
 public class SerialReader : MonoBehaviour {
     public PropellerController propellerController;
+    public OptionsScript options;
     private SerialPort stream;
     private string databuffer;
     private float start_updates_time = 2f;
@@ -12,8 +13,7 @@ public class SerialReader : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        stream = new SerialPort("COM3", 500000);
-        stream.Open();
+
 	}
 	
 	// Update is called once per frame
@@ -24,6 +24,9 @@ public class SerialReader : MonoBehaviour {
     private void FixedUpdate() { 
         if (stream == null || !stream.IsOpen)
         {
+            string portname = options.getSerialPortName();
+            stream = new SerialPort(portname, 500000);
+            stream.Open();
             return;
         }
 
