@@ -22,7 +22,7 @@ public class SerialReader : MonoBehaviour {
 	}
 
     private void FixedUpdate() { 
-        if (!stream.IsOpen)
+        if (stream == null || !stream.IsOpen)
         {
             return;
         }
