@@ -74,16 +74,17 @@ public class SerialReader : MonoBehaviour {
         if (Time.time - start_updates_time > 0f)
         {
             sendCopterData();
-            //Debug.Log("Sent " + msg + " at " + Time.time);
+            Debug.Log("Sent data update at " + Time.time);
         }
     }
 
     private void handleMessage(string message)
     {
         //Called after reading serial messages in the beginning of fixedupdate
-        //Debug.Log("Received serial: " + message + " at " + Time.time);
+        Debug.Log("Received serial: " + message + " at " + Time.time);
         float[] speeds = parsePropellerSpeeds(message);
         propellerController.setSerialPropellerSpeeds( speeds );
+
 
     }
 
